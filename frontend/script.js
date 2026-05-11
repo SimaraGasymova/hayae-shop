@@ -1,13 +1,19 @@
+// Те же 6 товаров, что и в каталоге
 const products = [
     { id: 1, name: "Модель «Ромашка»", price: 2500, image: "https://placehold.co/600x600/F5F5F5/1A1A1A?text=+&font=montserrat" },
     { id: 2, name: "Модель «Лаванда»", price: 3200, image: "https://placehold.co/600x600/F5F5F5/1A1A1A?text=+&font=montserrat" },
-    { id: 3, name: "Модель «Закат»", price: 2800, image: "https://placehold.co/600x600/F5F5F5/1A1A1A?text=+&font=montserrat" }
+    { id: 3, name: "Модель «Закат»", price: 2800, image: "https://placehold.co/600x600/F5F5F5/1A1A1A?text=+&font=montserrat" },
+    { id: 4, name: "Модель «Ночь»", price: 3500, image: "https://placehold.co/600x600/F5F5F5/1A1A1A?text=+&font=montserrat" },
+    { id: 5, name: "Модель «Мятная свежесть»", price: 3000, image: "https://placehold.co/600x600/F5F5F5/1A1A1A?text=+&font=montserrat" },
+    { id: 6, name: "Модель «Радужное настроение»", price: 3900, image: "https://placehold.co/600x600/F5F5F5/1A1A1A?text=+&font=montserrat" }
 ];
 
 function showPopular() {
     const grid = document.getElementById("popular-grid");
     if (!grid) return;
-    grid.innerHTML = products.map(p => `
+    // Показываем только первые 3 товара на главной
+    const popular = products.slice(0, 3);
+    grid.innerHTML = popular.map(p => `
         <div class="product-card">
             <img src="${p.image}" alt="${p.name}">
             <h3>${p.name}</h3>
