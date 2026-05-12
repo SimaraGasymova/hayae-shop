@@ -310,7 +310,21 @@ footer p:first-child {
     color: #999;
     letter-spacing: 1px;
 }
+.checkout-section {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    min-height: 60vh;
+}
 
+.checkout-container {
+    background: #FFFFFF;
+    padding: 2rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
 /* Адаптив */
 @media (max-width: 700px) {
     header {
