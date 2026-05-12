@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оформление заказа — HAYAÉ</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <div class="logo">HAYA<span class="accent">É</span></div>
+    <nav>
+        <a href="index.html">Главная</a>
+        <a href="catalog.html">Каталог</a>
+        <a href="contacts.html">Контакты</a>
+        <a href="cart.html">Корзина 🛒</a>
+    </nav>
+</header>
+
+<main>
+    <section class="checkout-section">
+        <h2>ОФОРМЛЕНИЕ ЗАКАЗА</h2>
+        
+        <div class="checkout-container">
+            <form id="order-form">
+                <div class="form-group">
+                    <label for="name">Имя *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Телефон *</label>
+                    <input type="tel" id="phone" name="phone" placeholder="+7 XXX XXX-XX-XX" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email">
+                </div>
+                
+                <div class="form-group">
+                    <label for="address">Адрес доставки *</label>
+                    <input type="text" id="address" name="address" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="comment">Комментарий к заказу</label>
+                    <textarea id="comment" name="comment" rows="3"></textarea>
+                </div>
+                
+                <div class="order-summary" id="order-summary"></div>
+                
+                <button type="submit" class="btn btn-primary">Отправить заказ</button>
+            </form>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>HAYAÉ — любовь в каждой бисеринке</p>
+    <p>VK: vk.com/hayae | MAX: @hayae</p>
+</footer>
+
+<script src="checkout.js"></script>
+</body>
+</html>
