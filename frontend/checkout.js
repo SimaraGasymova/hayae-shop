@@ -76,7 +76,7 @@ async function submitOrder(event) {
     
     try {
         // Отправляем письмо через EmailJS
-        const response = await emailjs.send('service_b2ku8q5', 'service_b2ku8q5', templateParams);
+        const response = await emailjs.send('service_a9gycjx', 'template_r00ibbh', templateParams);
         console.log('Письмо отправлено:', response);
         
         alert(`Заказ оформлен!\n\nСпасибо, ${name}!\nСумма заказа: ${total} ₽\n\nПисьмо с подтверждением отправлено на ${email}`);
