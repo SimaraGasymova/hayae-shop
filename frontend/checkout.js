@@ -1,3 +1,6 @@
+// Инициализация EmailJS
+emailjs.init("tm8Ic3KYTjSgLp8v1"); // Сюда вставь свой Public Key
+
 // Получить корзину из localStorage
 function getCart() {
     return JSON.parse(localStorage.getItem('cart')) || [];
@@ -32,7 +35,7 @@ function renderOrderSummary() {
 }
 
 // Отправить заказ
-function submitOrder(event) {
+async function submitOrder(event) {
     event.preventDefault();
     
     const cart = getCart();
@@ -42,38 +45,51 @@ function submitOrder(event) {
     }
     
     // Собираем данные из формы
-    const orderData = {
-        customer: {
-            name: document.getElementById('name').value,
-            phone: document.getElementById('phone').value,
-            email: document.getElementById('email').value,
-            address: document.getElementById('address').value,
-            comment: document.getElementById('comment').value
-        },
-        items: cart,
-        total: cart.reduce((sum, item) => sum + (item.price * item.quantity), 0),
-        date: new Date().toLocaleString('ru-RU')
-    };
+    const name = document.getElementById('name').value;
+    const phone = document.getElementById('phone').value;
+    const email = document.getElementById('email').value;
+    const address = document.getElementById('address').value;
+    const comment = document.getElementById('comment').value;
     
     // Проверяем обязательные поля
-    if (!orderData.customer.name || !orderData.customer.phone || !orderData.customer.address) {
+    if (!name || !phone || !address) {
         alert('Пожалуйста, заполните все обязательные поля (Имя, Телефон, Адрес)');
         return;
     }
     
-    // Показываем заказ в консоли (для отладки)
-    console.log('НОВЫЙ ЗАКАЗ:', orderData);
+    const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
     
-    // Здесь позже добавим отправку в Telegram / ВК / MAX
+    // Формируем данные для EmailJS
+    const templateParams = {
+        name: name,
+        email: email,
+        phone: phone,
+        address: address,
+        comment: comment,
+        items: cart.map(item => ({
+            name: item.name,
+            quantity: item.quantity,
+            price: item.price
+        })),
+        total: total + ' ₽'
+    };
     
-    // Показываем сообщение об успехе
-    alert(`Заказ оформлен!\n\nСпасибо, ${orderData.customer.name}!\nСумма заказа: ${orderData.total} ₽\n\nМы свяжемся с вами в ближайшее время.`);
-    
-    // Очищаем корзину
-    localStorage.removeItem('cart');
-    
-    // Перенаправляем на главную
-    window.location.href = 'index.html';
+    try {
+        // Отправляем письмо через EmailJS
+        const response = await emailjs.send('service_b2ku8q5', 'service_b2ku8q5', templateParams);
+        console.log('Письмо отправлено:', response);
+        
+        alert(`Заказ оформлен!\n\nСпасибо, ${name}!\nСумма заказа: ${total} ₽\n\nПисьмо с подтверждением отправлено на ${email}`);
+        
+        // Очищаем корзину
+        localStorage.removeItem('cart');
+        
+        // Перенаправляем на главную
+        window.location.href = 'index.html';
+    } catch (error) {
+        console.error('Ошибка при отправке:', error);
+        alert('Произошла ошибка при оформлении заказа. Пожалуйста, попробуйте еще раз.');
+    }
 }
 
 // Запускаем отображение состава заказа при загрузке страницы
