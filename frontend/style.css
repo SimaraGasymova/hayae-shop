@@ -325,6 +325,60 @@ footer p:first-child {
 .form-group {
     margin-bottom: 1.5rem;
 }
+/* ===== СТРАНИЦА ОФОРМЛЕНИЯ ЗАКАЗА (недостающие стили) ===== */
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #666;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #E5E5E5;
+    font-family: inherit;
+    font-size: 0.9rem;
+    transition: border-color 0.2s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #A67C00;
+}
+
+.order-summary {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: #F8F8F8;
+}
+
+.order-summary h3 {
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+.order-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #E5E5E5;
+    font-size: 0.85rem;
+}
+
+.order-total {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    font-weight: 600;
+    text-align: right;
+    border-top: 2px solid #1A1A1A;
+}
 /* Адаптив */
 @media (max-width: 700px) {
     header {
