@@ -394,3 +394,63 @@ footer p:first-child {
         letter-spacing: 4px;
     }
 }
+
+.contacts-section {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    min-height: 60vh;
+}
+
+.contacts-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1rem;
+    border-bottom: 1px solid #E5E5E5;
+}
+
+.contact-icon {
+    font-size: 2rem;
+    min-width: 50px;
+    text-align: center;
+}
+
+.contact-info h3 {
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 0.25rem;
+}
+
+.contact-info a {
+    color: #A67C00;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+}
+
+.contact-info p {
+    font-size: 0.8rem;
+    color: #666;
+    margin-top: 0.25rem;
+}
+
+.warning-note {
+    margin-top: 2rem;
+    padding: 1rem;
+    background-color: #F8F8F8;
+    border-left: 3px solid #A67C00;
+    font-size: 0.75rem;
+    color: #666;
+    text-align: center;
+}
